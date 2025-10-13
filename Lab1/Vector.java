@@ -19,6 +19,12 @@ public class Vector {
         return elems.length;
     }
 
+    private void checkDim(Vector v) {
+        if (this.elems.length != v.elems.length) {
+            System.out.println("Vectors must have the same dimension.");  
+        }
+    }
+
     // Añadir vector
     public Vector add(Vector v) {
         checkDim(v);
@@ -98,7 +104,7 @@ public class Vector {
 
     // Norma
     public double norm() {
-        return Math.sqrt(this.dotProduct(this));
+        return Math.sqrt(this.dotProduct(this)); //reutilizamos el dotProduct para ahorrarnos codigo que escribir
     }
 
     // Passar a String
@@ -112,10 +118,5 @@ public class Vector {
         return sb.toString();
     }
 
-    private void checkDim(Vector v) {
-        if (this.elems.length != v.elems.length) {
-            throw new IllegalArgumentException("Vectors must have the same dimension.");
-        }
-    }
 }
 

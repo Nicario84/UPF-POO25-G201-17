@@ -22,6 +22,7 @@ public class TestRecord {
         System.out.println("dot(v1, v2) = " + v1.dotProduct(v2));
         System.out.println("norm(v1) = " + v1.norm());
 
+
         // ----------------------------
         // Pruebas de record
         // ----------------------------

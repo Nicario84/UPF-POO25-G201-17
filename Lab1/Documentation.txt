@@ -1,0 +1,29 @@
+En este Lab tenemos que crear las primeras clases basicas de nuestro codigo.
+El objetivo del programa es printear una serie de operaciones como suma, resta, multiplicar... utlizando vectores y 
+prinetar dicho resultado.
+
+Las clases que hemos tenido que crear son: TestRecord, como clase main donde se prueba el codigo de las otras clases; 
+Vector, donde creamos las funciones encargadas de hacer los calculos mencionados anteriormente;
+Record, donde guardamos la información de los vectores. 
+
+En la clase TestRecord, solo contiene una clase main, que se encarga de crear todos los vectores y ejecutar las operaciones de 
+las otras clases. 
+
+En Vector, creamos una clase para crear dicho Vector, guardar su dimensión, y todas las operaciones necesarias: suma, resta, 
+multiplicar, dividir, raiz cuadrada, producto punto (·), la norma, y el método toString se encarga de crear el vector resultado. 
+
+La clase Record se encarga de printear la información dada y obtenida del codigo de manera separada. Hemos echo un ejemplo en 
+el que le damos un vector y un double para que nos lo separe de manera mas visual.
+
+Inicialmente estabamos creando la norma desde 0, pero luego nos hemos dado cuenta que podíamos reutilizar el codigo de dotProduct,
+ya que los primeros pasos de estos son idénticos. De esta manera, tener un código mas compacto y organizado.
+
+Como podemos ver en la ejecución el código funciona según lo previsto y nos da los resultados deseados, no obtante nos podemos
+encontrar con el siguiente problema:
+
+Durante la creacion del codigo nos hemos encontrado con el posible error donde los vectores no tienen la misma dimension. Si se
+ejecuta el programa con este error veremos que se printea una linea que nos indica que las dimensiones no son correctas, pero aún 
+así, tenemos un fallo en la ejecución.
+Queriamos hacer que el codigo dejara de ejecutarse al cumplirse la condicion que ambos vectores no tienen la misma dimension,
+pero no hemos sido capaces de programar el codigo encargado de detener la ejecución. Para proximos labs nos gustaría poder 
+manejar los posibles errores que tenga el codigo. 
