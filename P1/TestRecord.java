@@ -27,7 +27,7 @@ public class TestRecord {
         // ----------------------------
         // Pruebas de record
         // ----------------------------
-        System.out.println("\n=== Testing Record class ===");
+        System.out.println("\n=== Prueba Record ===");
 
         Record r1 = new Record(v1, 10.5);
         System.out.println("Record 1: " + r1);
