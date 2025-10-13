@@ -60,7 +60,7 @@ public class Vector {
     }
 
     // Multiplicar en escalar
-    public Vector multiply(double scalar) {
+    public Vector multiply_scalar(double scalar) {
         double[] result = new double[elems.length];
         for (int i = 0; i < elems.length; i++) {
             result[i] = this.elems[i] * scalar;
