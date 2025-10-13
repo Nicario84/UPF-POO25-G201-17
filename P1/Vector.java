@@ -1,14 +1,12 @@
 public class Vector {
 
-    private double[] elems; // array of doubles representing vector elements
+    private double[] elems; 
 
 
-    // Constructor using an existing array
     public Vector(double[] e) {
         this.elems = e; 
     }
 
-    // Constructor with dimension and initial value
     public Vector(int dim, double val) {
         this.elems = new double[dim];
         for (int i = 0; i < dim; i++) {
@@ -16,12 +14,12 @@ public class Vector {
         }
     }
 
-    // Return dimension of vector
+    // Dimension del vector
     public int getDim() {
         return elems.length;
     }
 
-    // Add another vector
+    // Añadir vector
     public Vector add(Vector v) {
         checkDim(v);
         double[] result = new double[elems.length];
@@ -31,7 +29,7 @@ public class Vector {
         return new Vector(result);
     }
 
-    // Subtract another vector
+    // quitar vector
     public Vector subtract(Vector v) {
         checkDim(v);
         double[] result = new double[elems.length];
@@ -41,7 +39,7 @@ public class Vector {
         return new Vector(result);
     }
 
-    // Multiply element-wise with another vector
+    // Multiplicar vectores
     public Vector multiply(Vector v) {
         checkDim(v);
         double[] result = new double[elems.length];
@@ -51,7 +49,7 @@ public class Vector {
         return new Vector(result);
     }
 
-    // Divide element-wise with another vector
+    // Dividir vector
     public Vector divide(Vector v) {
         checkDim(v);
         double[] result = new double[elems.length];
@@ -61,7 +59,7 @@ public class Vector {
         return new Vector(result);
     }
 
-    // Multiply with scalar
+    // Multiplicar en escalar
     public Vector multiply(double scalar) {
         double[] result = new double[elems.length];
         for (int i = 0; i < elems.length; i++) {
@@ -70,7 +68,7 @@ public class Vector {
         return new Vector(result);
     }
 
-    // Divide with scalar
+    // Dividir en escalar
     public Vector divide(double scalar) {
         double[] result = new double[elems.length];
         for (int i = 0; i < elems.length; i++) {
@@ -79,7 +77,7 @@ public class Vector {
         return new Vector(result);
     }
 
-    // Square root of each element
+    // Raiz cuadrada
     public Vector sqrt() {
         double[] result = new double[elems.length];
         for (int i = 0; i < elems.length; i++) {
@@ -88,7 +86,7 @@ public class Vector {
         return new Vector(result);
     }
 
-    // Dot product
+    // Signo de punto (·)
     public double dotProduct(Vector v) {
         checkDim(v);
         double sum = 0.0;
@@ -98,12 +96,12 @@ public class Vector {
         return sum;
     }
 
-    // Norm (magnitude)
+    // Norma
     public double norm() {
         return Math.sqrt(this.dotProduct(this));
     }
 
-    // Convert vector to string
+    // Passar a String
     public String toString() {
         StringBuilder sb = new StringBuilder("[");
         for (int i = 0; i < elems.length; i++) {
@@ -114,7 +112,6 @@ public class Vector {
         return sb.toString();
     }
 
-    // Helper method: check if dimensions match
     private void checkDim(Vector v) {
         if (this.elems.length != v.elems.length) {
             throw new IllegalArgumentException("Vectors must have the same dimension.");
