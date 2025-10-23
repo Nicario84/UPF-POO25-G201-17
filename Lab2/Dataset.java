@@ -1,3 +1,5 @@
+package Lab2;
+
 import java.util.ArrayList;
 
 public class Dataset {
@@ -18,12 +20,9 @@ public class Dataset {
     }
 
     public void addRecord(Record r) {
-        if (r.getInput().getElems().length != dim) {
-            System.out.println("La dimensiom del vector de entrada no coicide con la esperada");
-        }
         data.add(r);
     }
-
+    
     public Record getRecord(int i) {
         return data.get(i);
     }
@@ -43,7 +42,7 @@ public class Dataset {
             sum += data.get(i).getOutput();
         }
         return sum / data.size();
-  }
+    }
 
 
     @Override
@@ -53,6 +52,6 @@ public class Dataset {
             sb.append(data.get(i).toString()).append("\n");
         }
         return sb.toString();
-}
+    }
 
 }
