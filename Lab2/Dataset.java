@@ -44,6 +44,42 @@ public class Dataset {
         return sum / data.size();
     }
 
+    public Vector stdInput() {
+        Vector mean = meanInput();
+        Vector sumSq = new Vector(dim, 0.0);
+        for (Record record : data) {
+            Vector diff = record.getInput().subtract(mean);
+            sumSq = sumSq.add(diff.multiply(diff));
+        }
+        return sumSq.divide(data.size()).sqrt();
+    }
+
+    public double stdOutput() {
+        double mean = meanOutput();
+        double sumSq = 0.0;
+        for (Record record : data) {
+            double diff = record.getOutput() - mean;
+            sumSq += diff * diff;
+        }
+        return Math.sqrt(sumSq / data.size());
+    }
+
+    public StandardizedDataset standardize() {
+        Vector mean_in = meanInput();
+        Vector std_in = stdInput();
+        double mean_out = meanOutput();
+        double std_out = stdOutput();
+
+        StandardizedDataset sd = new StandardizedDataset(dim, mean_in, std_in, mean_out, std_out);
+
+        for (Record r : data) {
+            Record transformed = sd.transform(r);
+            sd.addRecord(transformed);
+        }
+
+        return sd;
+    }
+
 
     @Override
     public String toString() {
