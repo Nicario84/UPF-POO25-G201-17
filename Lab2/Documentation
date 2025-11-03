@@ -1,0 +1,18 @@
+En esta práctica hemos creado una serie de clases para trabajar con conjuntos de datos numéricos. La idea es poder guardar registros que tienen entradas (como vectores de números) y 
+una salida (un número), calcular estadísticas como la media y la desviación estándar, y luego transformar esos datos para que estén “normalizados” (es decir, que tengan media 0 y desviación estándar 1).
+
+Para ello hemos creado la siguientes clases:
+Vector, que representa un array de números y tiene métodos para hacer operaciones como sumar, restar, multiplicar, dividir, sacar la raíz cuadrada, calcular la norma, etc.
+Record, que guarda un vector de entrada y una salida numérica.
+Dataset, qe guarda una lista de Record y tiene métodos para calcular la media y desviación estándar de los datos. También tiene un método standardize que crea un nuevo conjunto de datos normalizado.
+StandardizedDataset, que hereda de Dataset y guarda las medias y desviaciones estándar para poder transformar los datos.
+TestDataset, que es la clase con el main, donde probamos que todo funciona bien.
+
+Al principio pensamos en como guardar los datos. Hemos pensado en utilizar ArrayList porque es fácil de usar y permite añadir elementos facilmente. También nos pareció útil porque se puede acceder a cualquier elemento rápido.
+Para calcular la media y desviación estándar, hemos usado métodos que ya estaban en la clase Vector, como add, subtract, divide, etc. Esto nos ahorró escribir más código y nos ayudó a mantener todo más organizado.
+También usamos herencia en StandardizedDataset para no repetir el código de Dataset. Así aprovechamos lo que ya teníamos hecho y solo añadimos lo nuevo que necesitábamos (las medias, desviaciones y el método transform).
+
+Después de probar todo el código en la clase TestDataset, vimos que todo funcionaba bien. Se crearon los datos, se añadieron al dataset, se calcularon las estadísticas y se generó el dataset estandarizado. 
+Al imprimir los datos normalizados, vemos que la media era cercana a 0 y la desviación estándar cercana a 1, como esperabamos.
+Tuvimos algunos problemas, como asegurarnos de que los vectores tuvieran la misma dimensión al hacer operaciones, pero lo solucionamos con el método checkDim.
+
