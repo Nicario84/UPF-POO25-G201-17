@@ -1,11 +1,11 @@
 import java.util.ArrayList;
 
 public abstract class Dataset {
-    private int dim;
-    private ArrayList<Record> data;
+    protected int dim;
+    protected ArrayList<Record> data;
 
-    public Dataset(int d) {
-        this.dim = d;
+    public Dataset(int dim) {
+        this.dim = dim;
         this.data = new ArrayList<>();
     }
 
