@@ -40,7 +40,7 @@ public class Vector {
     }
 
     // quitar vector
-    public Vector substract(Vector v) {
+    public Vector subtract(Vector v) {
         checkDim(v);
         double[] result = new double[elems.length];
         for (int i = 0; i < elems.length; i++) {

@@ -19,23 +19,22 @@ public class TestLearner {
         }
 
         // Ahora creamos el algoritmo y resolvemos el modelo
-        Algorithm algo = new Algorithm();
+        Algorithm algo = new Algorithm(0.05, 1e-6);
         Model model = algo.solve(ds);
         System.out.println("\nParametros del modelo despues del training: ");
         System.out.println(model);
 
         // Probamos la predicción con el modelo
-        Vector testInput = input3;
-        Vector prediction = model.predict(testInput);
-        System.out.println("\nPrediccion del input " + testInput + ": " + prediction.get(0));
+        double prediction = model.predict(input3);
+        System.out.println("\nPrediccion del input " + input3 + ": " + prediction);
 
         // Usamos SupervisedLearner
         SupervisedLearner learner = new SupervisedLearner(algo, ds);
-        learner.train();
+        learner.solve();
         System.out.println("\nModelo de aprendizaje: ");
         System.out.println(learner);
 
-        Vector learnerPrediction = learner.predict(testInput);
-        System.out.println("\nPrediccion de aprendizaje del input " + testInput + ": " + learnerPrediction.get(0));
+        double learnerPrediction = learner.predict(input3);
+        System.out.println("\nPrediccion de aprendizaje del input " + input3 + ": " + learnerPrediction);
     }
 }

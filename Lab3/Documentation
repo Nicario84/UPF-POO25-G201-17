@@ -1,5 +1,5 @@
-En esta práctica hemos creado una serie de clases para trabajar con conjuntos de datos numéricos. La idea es poder guardar registros que tienen entradas (como vectores de números) y 
-una salida (un número), calcular estadísticas como la media y la desviación estándar, y luego transformar esos datos para que estén “normalizados” (es decir, que tengan media 0 y desviación estándar 1).
+En esta práctica se mantienen las clases básicas para manejar datos numéricos (Vector, Record, Dataset, StandardizedDataset) y se han introducido componentes para aprendizaje supervisado sencillo: Algorithm, Model, 
+SupervisedLearner y TestLearner. El objetivo es poder entrenar un modelo lineal por descenso de gradiente sobre datasets de Records (entrada: Vector, salida: double) y validar el flujo desde los datos hasta las predicciones.
 
 Para ello hemos creado la siguientes clases:
 Vector, que representa un array de números y tiene métodos para hacer operaciones como sumar, restar, multiplicar, dividir, sacar la raíz cuadrada, calcular la norma, etc.
@@ -8,11 +8,13 @@ Dataset, qe guarda una lista de Record y tiene métodos para calcular la media y
 StandardizedDataset, que hereda de Dataset y guarda las medias y desviaciones estándar para poder transformar los datos.
 TestDataset, que es la clase con el main, donde probamos que todo funciona bien.
 
-Al principio pensamos en como guardar los datos. Hemos pensado en utilizar ArrayList porque es fácil de usar y permite añadir elementos facilmente. También nos pareció útil porque se puede acceder a cualquier elemento rápido.
-Para calcular la media y desviación estándar, hemos usado métodos que ya estaban en la clase Vector, como add, subtract, divide, etc. Esto nos ahorró escribir más código y nos ayudó a mantener todo más organizado.
-También usamos herencia en StandardizedDataset para no repetir el código de Dataset. Así aprovechamos lo que ya teníamos hecho y solo añadimos lo nuevo que necesitábamos (las medias, desviaciones y el método transform).
+Mantenemos las clases para datos: Vector, Record, Dataset y StandardizedDataset (normaliza con media y desviación).
+Las nuevas clases para aprendizaje supervisado que hemos tenido que crear gan sido:
+Algorithm, usa descenso de gradiente batch (learningRate, stoppingCriterion). Esto calcula gradiente y actualiza el modelo hasta converger.
+Model, es un modelo lineal (params como Vector), predict(Vector) devuelve double (producto punto con input.augment()), update aplica el gradiente.
+SupervisedLearner, que usa Algorithm y Dataset para entrenar y predecir.
+TestLearner, es nustro main, tiene casos de prueba, imprime dataset, parámetros y predicciones.
 
-Después de probar todo el código en la clase TestDataset, vimos que todo funcionaba bien. Se crearon los datos, se añadieron al dataset, se calcularon las estadísticas y se generó el dataset estandarizado. 
-Al imprimir los datos normalizados, vemos que la media era cercana a 0 y la desviación estándar cercana a 1, como esperabamos.
-Tuvimos algunos problemas, como asegurarnos de que los vectores tuvieran la misma dimensión al hacer operaciones, pero lo solucionamos con el método checkDim.
+Después del entrenamiento, params contiene los coeficientes del modelo lineal y las predicciones sobre nuevos inputs (producto punto con input.augment()) deben acercarse a las salidas observadas del dataset 
+según la capacidad del modelo y la convergencia del descenso de gradiente.
 

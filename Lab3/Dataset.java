@@ -50,7 +50,7 @@ public class Dataset {
         Vector mean = meanInput();
         Vector sumSq = new Vector(dim, 0.0);
         for (Record record : data) {
-            Vector diff = record.getInput().substract(mean);
+            Vector diff = record.getInput().subtract(mean);
             sumSq = sumSq.add(diff.multiply(diff));
         }
         return sumSq.divide(data.size()).sqrt();

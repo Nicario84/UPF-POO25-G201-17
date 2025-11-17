@@ -13,7 +13,7 @@ public class StandardizedDataset extends Dataset{
     }
 
     public Record transform(Record r) {
-        Vector standardizedInput = r.getInput().substract(mean_in).divide(std_in);
+        Vector standardizedInput = r.getInput().subtract(mean_in).divide(std_in);
         double standardizedOutput = (r.getOutput() - mean_out) / std_out;
         return new Record(standardizedInput, standardizedOutput);
     }

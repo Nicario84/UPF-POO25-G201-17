@@ -6,11 +6,7 @@ public class SupervisedLearner {
     public SupervisedLearner(Algorithm a, Dataset d) {
         this.algorithm = a;
         this.dataset = d;
-    }
-
-    public double train() {
-        this.model = algorithm.solve(dataset);
-        return 0.0;
+        this.model = new Model(dataset.getDim());   // Inicializamos el modelo con ceros
     }
 
     public Model solve() {
@@ -18,8 +14,9 @@ public class SupervisedLearner {
         return model;
     }
 
-    public Vector predict(Vector input) {
-        return model.predict(input);
+    public double predict(Vector input) {
+        Vector augmented = input.augment();
+        return model.getParams().dotProduct(augmented);
     }
 
     public String toString() {
