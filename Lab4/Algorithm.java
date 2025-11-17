@@ -1,6 +1,6 @@
-public class Algorithm {
-    private double learningRate;
-    private double stoppingCriterion;
+public abstract class Algorithm {
+    protected double learningRate;
+    protected double stoppingCriterion;
 
     public Algorithm(double learningRate, double stoppingCriterion) {
         this.learningRate = learningRate;   
