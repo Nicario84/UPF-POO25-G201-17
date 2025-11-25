@@ -22,7 +22,7 @@ public class SupervisedLearner {
 
         double yHat = model.predict(xa);
 
-        return dataset.output(yHat);
+        return dataset.output(yHat);    //falta implementar output en Dataset
     }
 
     public String toString() {
