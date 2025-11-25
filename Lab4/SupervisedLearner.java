@@ -14,9 +14,15 @@ public class SupervisedLearner {
         return model;
     }
 
-    public double predict(Vector input) {
-        Vector augmented = input.augment();
-        return model.getParams().dotProduct(augmented);
+    public double predict(Vector x) {
+
+        Vector xt = dataset.transform(x);   //falta implementar transform en Dataset
+
+        Vector xa = xt.augment();
+
+        double yHat = model.predict(xa);
+
+        return dataset.output(yHat);
     }
 
     public String toString() {

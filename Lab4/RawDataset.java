@@ -40,9 +40,6 @@ public class RawDataset extends Dataset {
         return Math.sqrt(sumSq / data.size());
     }
 
-    /**
-     * Crear un StandardizedDataset basado en este RawDataset.
-     */
     public StandardizedDataset standardize() {
         Vector mean_in = meanInput();
         Vector std_in = stdInput();
