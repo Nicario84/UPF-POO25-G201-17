@@ -14,9 +14,9 @@ public class StandardizedDataset extends Dataset{
 
     @Override
     public Record transform(Record r) {
-        Vector x = r.getInput().subtract(mean_in).divide(std_in);
-        double y = (r.getOutput() - mean_out) / std_out;
-        return new Record(x, y);
+        Vector standardizedInput = r.getInput().subtract(mean_in).divide(std_in);
+        double standardizedOutput = (r.getOutput() - mean_out) / std_out;
+        return new Record(standardizedInput, standardizedOutput);
     }
 
     @Override

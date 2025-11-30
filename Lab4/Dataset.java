@@ -31,7 +31,7 @@ public abstract class Dataset {
 
     public abstract Record transform(Record r);
 
-    //falta implementar estos dos en Dataset
+    //como son abstractos no hay que formar un codigo
 
     public abstract double output(double y);
 

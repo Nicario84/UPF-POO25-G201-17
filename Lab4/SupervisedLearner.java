@@ -6,7 +6,8 @@ public class SupervisedLearner {
     public SupervisedLearner(Algorithm a, Dataset d) {
         this.algorithm = a;
         this.dataset = d;
-        this.model = new Model(dataset.getDim());   // Inicializamos el modelo con ceros
+        // Inicializamos el modelo con ceros. El tamaño es dim+1
+        this.model = new Model(dataset.getDim()); 
     }
 
     public Model solve() {
@@ -15,14 +16,21 @@ public class SupervisedLearner {
     }
 
     public double predict(Vector x) {
+        // Crear un Record temporal 
+        Record rawRecord = new Record(x, 0.0);
+        
+        // Transformar el Record 
+        Record transformedRecord = dataset.transform(rawRecord);
+        Vector rt = transformedRecord.getInput();
 
-        Vector xt = dataset.transform(x);   //falta implementar transform en Dataset
+        // Aumentar el vector de entrada 
+        Vector ra = rt.augment();
 
-        Vector xa = xt.augment();
+        // Obtener la predicción del modelo 
+        double yHat = model.predict(rt); // *Nota: Model.predict(Vector input) ya llama a augment() internamente*
 
-        double yHat = model.predict(xa);
-
-        return dataset.output(yHat);    //falta implementar output en Dataset
+        // transformada inversa
+        return dataset.output(yHat);
     }
 
     public String toString() {
