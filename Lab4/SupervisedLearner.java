@@ -23,11 +23,8 @@ public class SupervisedLearner {
         Record transformedRecord = dataset.transform(rawRecord);
         Vector rt = transformedRecord.getInput();
 
-        // Aumentar el vector de entrada 
-        Vector ra = rt.augment();
-
         // Obtener la predicción del modelo 
-        double yHat = model.predict(rt); // *Nota: Model.predict(Vector input) ya llama a augment() internamente*
+        double yHat = model.predict(rt); 
 
         // transformada inversa
         return dataset.output(yHat);

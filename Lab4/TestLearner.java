@@ -10,17 +10,17 @@ public class TestLearner {
         Record r2 = new Record(input2, 4.0);
 
         // Creamos el dataset con los record
-        Dataset ds = new Dataset(2);
-        ds.addRecord(r1);
-        ds.addRecord(r2);
+        RawDataset rawData = new RawDataset(2);
+        rawData.addRecord(r1);
+        rawData.addRecord(r2);
         System.out.println("\nDataset:");
-        for (int i = 0; i < ds.size(); i++) {
-            System.out.println(ds.getRecord(i));
+        for (int i = 0; i < rawData.size(); i++) {
+            System.out.println(rawData.getRecord(i));
         }
 
         // Ahora creamos el algoritmo y resolvemos el modelo
-        Algorithm algo = new Algorithm(0.05, 1e-6);
-        Model model = algo.solve(ds);
+        Algorithm algo = new GradientDescent(0.05, 0.001);
+        Model model = algo.solve(rawData);
         System.out.println("\nParametros del modelo despues del training: ");
         System.out.println(model);
 
@@ -29,7 +29,7 @@ public class TestLearner {
         System.out.println("\nPrediccion del input " + input3 + ": " + prediction);
 
         // Usamos SupervisedLearner
-        SupervisedLearner learner = new SupervisedLearner(algo, ds);
+        SupervisedLearner learner = new SupervisedLearner(algo, rawData);
         learner.solve();
         System.out.println("\nModelo de aprendizaje: ");
         System.out.println(learner);
