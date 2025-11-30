@@ -1,0 +1,26 @@
+En esta práctica mantenemos las clases básicas para manejar datos numéricos (Vector, Record, Dataset, RawDataset, StandardizedDataset) y hemos introducido 
+componentes para aprendizaje supervisado sencillo: Algorithm, GradientDescent, StochasticGradientDescent, Model, SupervisedLearner y TestLearner. El objetivo 
+es que podamos entrenaar un modelo lineal por descenso de gradiente (batch o estocástico) sobre datasets de Records (entrada: Vector, salida: double) y enmtonces
+validar el flujo desde los datos hasta las predicciones.
+
+Para ello hemos creado las siguientes clases: 
+# Vector, que representa un array de números y tiene métodos para hacer operaciones como sumar, restar, multiplicar, dividir, sacar la raíz cuadrada, calcular 
+la norma, el producto punto y aumentar la dimensión para incluir el bias. 
+# Record, que guarda un vector de entrada y una salida numérica. 
+# Dataset, clase abstracta que organiza una lista de Records y que puede transformar registros y aplicar la salida inversa. 
+# RawDataset, que hereda de Dataset y mantiene los datos en su forma original, que nos permite calcular medias y desviacionmes estándar de entradas y salidas, y que
+ademas contiene el método standardize para crear un conjunto de datos normalizado. 
+# StandardizedDataset, que hereda de Dataset y guarda las medias y desviaciones estándar para poder transformar y destransformar los datos. 
+# TestRawDataset, que es la clase de prueba para validar los cálculos internos de RawDataset y comprobar que la estandarización y la transformación inversa van bien,
+# Algorithm, clase abstracta que define los algoritmos de entrenamiento, con parámetros como la tasa de aprendizaje y el método solve. 
+# GradientDescent, implementación batch del descenso de gradiente, que calcula el gradiente sobre todo el dataset y actualiza los parámetros del modelo hasta que estos
+coverhen según un criterio de parada. 
+# StochasticGradientDescent, variante estocástica que usa minibatches aleatorios en cada iteración.
+# Model, que representa un modelo lineal (params como Vector). El metodo predict devuelve un double (producto punto con input.augment()), y update aplica el gradiente. 
+# SupervisedLearner, que usa Algorithm y Dataset para entrenar y predecir.
+# TestLearner, que es nuestra clase principal con el main, donde probamos que todo funciona bien: imprime el dataset, entrena el modelo, muestra los parámetros y realiza 
+predicciones tanto con el modelo directo como con el SupervisedLearner.
+
+Después del entrenamiento, params contiene los coeficientes del modelo lineal y las predicciones sobre nuevos inputs (producto punto con input.augment()) deben 
+acercarse a las salidas observadas del dataset según la capacidad del modelo y la convergencia del descenso de gradiente. De este modo podemos validsr el flujo completo 
+de aprendizaje supervisado.
